@@ -1,6 +1,6 @@
 # PracticalFunction
 
-PracticalFunction is a mod for **Monster Black Market** that adds some Practical Function and allowed customizing some game settings.
+PracticalFunction is a mod for **Monster Black Market** —— adding some Practical Function and allowing customizing some game settings.
 
 ### Features
 
