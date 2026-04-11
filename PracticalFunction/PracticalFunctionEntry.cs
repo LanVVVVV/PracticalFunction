@@ -1,5 +1,6 @@
 ﻿using MBM.ModLoader.Core;
 using MBM.ModLoader.Settings;
+using PracticalFunction.Features;
 using PracticalFunction.Patches;
 using PracticalFunction.Properties;
 using UnityEngine;
@@ -16,6 +17,8 @@ public class PracticalFunctionEntry
         ModSettingsOnChanged();
         Localization.OnLanguageChanged += OnLanguageChanged;
 
+        PracticalFunctionDeployer.Initialize();
+
         Log("PracticalFunction Mod loaded!");
     }
     internal static void Log(string msg) => Debug.Log($"[PF] {msg}");
@@ -25,7 +28,9 @@ public class PracticalFunctionEntry
         ModSettings.RegisterBool(ModName, "Drag During Pause", true, Strings.Config_DragDuringPause, "Base");
         
         ModSettings.RegisterBool(ModName, "Game Speed Extensions", true, Strings.Config_GameSpeedExtensions, "Base");
-        
+
+        ModSettings.RegisterBool(ModName, "One-Click Sell", true, Strings.Config_OneClickSell, "Base");
+
 
         ModSettings.RegisterBool(ModName, "Disable Slave Escape", false, Strings.Config_DisableSlaveEscape, "Advance");
 
@@ -76,6 +81,7 @@ public class PracticalFunctionEntry
         InteractionDragPatch.enabledDragDuringPause = ModSettings.GetBool(ModName, "Drag During Pause");
         ConfigDataPatch.enabledGameSpeedExtensions = ModSettings.GetBool(ModName, "Game Speed Extensions");
         ConfigDataPatch.enabledDisableSlaveEscape = ModSettings.GetBool(ModName, "Disable Slave Escape");
+        OneClickSell.enabled = ModSettings.GetBool(ModName, "One-Click Sell");
 
         ConfigDataPatch.percentThatChangesToDrain = ModSettings.GetFloat(ModName, "Percent That Changes To Drain");
         ConfigDataPatch.secondsOfDay = ModSettings.GetFloat(ModName, "Game day length");
@@ -113,6 +119,11 @@ public class PracticalFunctionEntry
         {
             ConfigDataPatch.enabledDisableSlaveEscape = (bool)v;
             Log($"Disable Slave Escape = {ConfigDataPatch.enabledDisableSlaveEscape}");
+        });
+        ModSettings.OnChanged(ModName, "One-Click Sell", v =>
+        {
+            OneClickSell.enabled = (bool)v;
+            Log($"One-Click Sell = {OneClickSell.enabled}");
         });
 
         ModSettings.OnChanged(ModName, "Percent That Changes To Drain", v =>
@@ -209,6 +220,7 @@ public class PracticalFunctionEntry
         ModSettings.SetDescription(ModName, "Drag During Pause", Strings.Config_DragDuringPause);
         ModSettings.SetDescription(ModName, "Game Speed Extensions", Strings.Config_GameSpeedExtensions);
         ModSettings.SetDescription(ModName, "Disable Slave Escape", Strings.Config_DisableSlaveEscape);
+        ModSettings.SetDescription(ModName, "One-Click Sell", Strings.Config_OneClickSell);
 
         ModSettings.SetDescription(ModName, "Percent That Changes To Drain", Strings.Config_PercentThatChangesToDrain);
         ModSettings.SetDescription(ModName, "Game day length", Strings.Config_Gamedaylength);

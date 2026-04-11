@@ -177,4 +177,10 @@
   <data name="Config_DragDuringPause" xml:space="preserve">
     <value>Allow Dragging Units during Pause.</value>
   </data>
+  <data name="Message_NoSellBirth" xml:space="preserve">
+    <value>Cannot sell during birth.</value>
+  </data>
+  <data name="Config_OneClickSell" xml:space="preserve">
+    <value>Sell Character on Delete Key Press.</value>
+  </data>
 </root>

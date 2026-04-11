@@ -9,6 +9,7 @@ PracticalFunction is a mod for **Monster Black Market** —— adding some Pract
 | Function    | Drag During Pause                           | Allow Dragging Units during Pause.                                         |
 | Function    | Game Speed Extensions                       | More Game Speed multipliers.                                               |
 | Function    | Disable Slave Escape                        | Prevent Slave Escape from Brothel.                                         |
+| Function    | One-Click Sell                              | Sell Character on Delete Key Press.                                        |
 | Function    | Dismantling Limit                           | Flora's Overwork Dismantle Limit (-1 = Immune to overwork).                |
 | Customizing | Start Gold                                  | Initial Funds at Game Start.                                               |
 | Customizing | Private Estate Cost                         | Personal Estate Price.(Does not affect tooltips)                           |

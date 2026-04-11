@@ -177,4 +177,10 @@
   <data name="Config_DragDuringPause" xml:space="preserve">
     <value>允许在暂停时拖动单位。</value>
   </data>
+  <data name="Message_NoSellBirth" xml:space="preserve">
+    <value>生产中不能售卖。</value>
+  </data>
+  <data name="Config_OneClickSell" xml:space="preserve">
+    <value>按下Delete键售卖角色。</value>
+  </data>
 </root>

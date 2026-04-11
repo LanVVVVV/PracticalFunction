@@ -178,6 +178,15 @@ namespace PracticalFunction.Properties {
         }
         
         /// <summary>
+        ///   查找类似 Sell Character on Delete Key Press. 的本地化字符串。
+        /// </summary>
+        internal static string Config_OneClickSell {
+            get {
+                return ResourceManager.GetString("Config_OneClickSell", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 The percentage of Health at which a Slave becomes Drained. 的本地化字符串。
         /// </summary>
         internal static string Config_PercentThatChangesToDrain {
@@ -237,6 +246,15 @@ namespace PracticalFunction.Properties {
         internal static string Config_TimeToDieFromVenerealDisease {
             get {
                 return ResourceManager.GetString("Config_TimeToDieFromVenerealDisease", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Cannot sell during birth. 的本地化字符串。
+        /// </summary>
+        internal static string Message_NoSellBirth {
+            get {
+                return ResourceManager.GetString("Message_NoSellBirth", resourceCulture);
             }
         }
     }
