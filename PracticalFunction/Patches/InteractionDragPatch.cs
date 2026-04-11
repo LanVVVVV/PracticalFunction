@@ -1,7 +1,7 @@
 ﻿using HarmonyLib;
 using MBMScripts;
 
-namespace PracticalFunction.Patch;
+namespace PracticalFunction.Patches;
 
 [HarmonyPatch(typeof(InteractionUnit), nameof(InteractionUnit.Drag))]
 public class InteractionDragPatch

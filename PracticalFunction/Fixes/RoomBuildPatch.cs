@@ -2,7 +2,7 @@
 using MBMScripts;
 using UnityEngine;
 
-namespace PracticalFunction.Fix;
+namespace PracticalFunction.Fixes;
 
 [HarmonyPatch(typeof(Room), nameof(Room.OnStart))]
 public class RoomBuildPatch

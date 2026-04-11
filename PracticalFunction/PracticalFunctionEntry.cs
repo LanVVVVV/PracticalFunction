@@ -1,6 +1,6 @@
 ﻿using MBM.ModLoader.Core;
 using MBM.ModLoader.Settings;
-using PracticalFunction.Patch;
+using PracticalFunction.Patches;
 using PracticalFunction.Properties;
 using UnityEngine;
 
