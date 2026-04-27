@@ -12,7 +12,7 @@ internal class PracticalFunctionDeployer : MonoBehaviour
         go.hideFlags = HideFlags.HideAndDontSave;
         go.AddComponent<PracticalFunctionDeployer>();
 
-        PracticalFunctionEntry.Log("Deployer loaded!");
+        ModEntry.Log("Deployer loaded!");
     }
 
     private void Update()

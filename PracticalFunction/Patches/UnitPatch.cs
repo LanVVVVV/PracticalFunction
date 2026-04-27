@@ -1,18 +1,19 @@
 ﻿using HarmonyLib;
 using MBMScripts;
+using PracticalFunction.ModConfig;
 
 namespace PracticalFunction.Patches;
 
 [HarmonyPatch(typeof(Unit))]
-internal class UnitPatch
+public class UnitPatch
 {
-    internal static int priceTentacleEgg;
+    private static int PriceTentacleEgg { get => ModSettingsDateRegister.PriceTentacleEggDate.GetValue; }
 
     [HarmonyPatch(nameof(Unit.Price), MethodType.Getter)]
     [HarmonyPostfix]
     public static void PricePostfix(Unit __instance, ref int __result)
     {
         if (__instance is Item item && item.ItemType == EItemType.Item_TentacleEgg)
-            __result = priceTentacleEgg;
+            __result = PriceTentacleEgg;
     }
 }

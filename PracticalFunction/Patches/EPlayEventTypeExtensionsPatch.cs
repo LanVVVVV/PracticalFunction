@@ -1,12 +1,13 @@
 ﻿using HarmonyLib;
 using MBMScripts;
+using PracticalFunction.ModConfig;
 
 namespace PracticalFunction.Patches;
 
 [HarmonyPatch(typeof(EPlayEventTypeExtensions))]
-internal class EPlayEventTypeExtensionsPatch
+public class EPlayEventTypeExtensionsPatch
 {
-    internal static int dismantlingLimit; 
+    private static int DismantlingLimit { get => ModSettingsDateRegister.DismantlingLimitDate.GetValue; }
 
     [HarmonyPatch(nameof(EPlayEventTypeExtensions.GetValue))]
     [HarmonyPostfix]
@@ -14,12 +15,12 @@ internal class EPlayEventTypeExtensionsPatch
     {
         if (playEventType == EPlayEventType.ThisIsBlackCompany && index == 0)
         {
-            if(dismantlingLimit == -1)
+            if(DismantlingLimit == -1)
             {  
                 __result = 2147483583;
                 return;
             }
-            __result = dismantlingLimit;
+            __result = DismantlingLimit;
         }
     }
 }

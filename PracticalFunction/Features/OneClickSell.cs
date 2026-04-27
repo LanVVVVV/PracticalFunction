@@ -1,20 +1,21 @@
 ﻿using MBMScripts;
 using UnityEngine;
 using PracticalFunction.Properties;
+using PracticalFunction.ModConfig;
 
 namespace PracticalFunction.Features;
 
-internal static class OneClickSell
+public static class OneClickSell
 {
-    internal static bool enabled;
+    private static bool Enabled { get => ModSettingsDateRegister.OneClickSellDate.GetValue; }
 
-    internal static void OnKeyPress()
+    public static void OnKeyPress()
     {
-        if (!enabled) return;
+        if (!Enabled) return;
         if (Input.GetKeyDown(KeyCode.Delete)) Sell();
     }
 
-    internal static void Sell()
+    public static void Sell()
     {
         GameManager instance = GameManager.Instance;
         PlayData playerData = instance.PlayerData;
@@ -36,7 +37,7 @@ internal static class OneClickSell
         if (unit is Character) SellCharacter(unit);
     }
 
-    internal static void SellCharacter(Unit unit)
+    public static void SellCharacter(Unit unit)
     {
         GameManager instance = GameManager.Instance;
 

@@ -1,12 +1,13 @@
 ﻿using HarmonyLib;
 using MBMScripts;
+using PracticalFunction.ModConfig;
 
 namespace PracticalFunction.Patches;
 
 [HarmonyPatch(typeof(InteractionUnit), nameof(InteractionUnit.Drag))]
 public class InteractionDragPatch
 {
-    internal static bool enabledDragDuringPause;
+    private static bool EnabledDragDuringPause { get => ModSettingsDateRegister.DragDuringPauseDate.GetValue; }
 
     /// <summary>
     /// Bypass GameSpeedIsZero and Record the original value.
@@ -15,7 +16,7 @@ public class InteractionDragPatch
     public static void DragPrefix(out bool __state)
     {
         __state = GameManager.Instance.GameSpeedIsZero;
-        if (!enabledDragDuringPause) return;
+        if (!EnabledDragDuringPause) return;
         GameManager.Instance.GameSpeedIsZero = false;
     }
 
@@ -25,7 +26,7 @@ public class InteractionDragPatch
     [HarmonyPostfix]
     public static void DragPostfix(bool __state)
     {
-        if (!enabledDragDuringPause) return;
+        if (!EnabledDragDuringPause) return;
         if (__state) GameManager.Instance.GameSpeedIsZero = __state;
     }
 }

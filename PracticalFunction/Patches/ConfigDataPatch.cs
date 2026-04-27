@@ -1,50 +1,51 @@
 ﻿using HarmonyLib;
 using MBMScripts;
+using PracticalFunction.ModConfig;
 
 namespace PracticalFunction.Patches;
 
 [HarmonyPatch(typeof(ConfigData))]
-internal class ConfigDataPatch
+public class ConfigDataPatch
 {
-    internal static bool enabledGameSpeedExtensions;
+    private static bool EnabledGameSpeedExtensions { get => ModSettingsDateRegister.GameSpeedExtensionsDate.GetValue; }
 
-    internal static bool enabledDisableSlaveEscape;
+    private static bool EnabledDisableSlaveEscape { get => ModSettingsDateRegister.DisableSlaveEscapeDate.GetValue; }
 
-    internal static float percentThatChangesToDrain;
+    private static float PercentThatChangesToDrain { get => ModSettingsDateRegister.PercentThatChangesToDrainDate.GetValue; }
 
-    internal static float secondsOfDay;
+    private static float SecondsOfDay { get => ModSettingsDateRegister.SecondsOfDayDate.GetValue; }
 
-    internal static float restTime;
+    private static float RestTime { get => ModSettingsDateRegister.RestTimeDate.GetValue; }
 
-    internal static float timeBodyDecays;
+    private static float TimeBodyDecays { get => ModSettingsDateRegister.TimeBodyDecaysDate.GetValue; }
 
-    internal static int startGold;
+    private static int StartGold { get => ModSettingsDateRegister.StartGoldDate.GetValue; }
 
-    internal static float timeToDieFromVenerealDisease;
+    private static float TimeToDieFromVenerealDisease { get => ModSettingsDateRegister.TimeToDieFromVenerealDiseaseDate.GetValue; }
 
-    internal static int costOfDisposingCorpse;
+    private static int CostOfDisposingCorpse { get => ModSettingsDateRegister.CostOfDisposingCorpseDate.GetValue; }
 
-    internal static int costOfDisposingInfertileMonster;
+    private static int CostOfDisposingInfertileMonster { get => ModSettingsDateRegister.CostOfDisposingInfertileMonsterDate.GetValue; }
 
-    internal static float pixyMoveDurationMultiplier;
+    private static float PixyMoveDurationMultiplier { get => ModSettingsDateRegister.PixyMoveDurationMultiplierDate.GetValue; }
 
-    internal static int loanPeriod;
+    private static int LoanPeriod { get => ModSettingsDateRegister.LoanPeriodDate.GetValue; }
 
-    internal static int soulOfTentacleEgg;
+    private static int SoulOfTentacleEgg { get => ModSettingsDateRegister.SoulOfTentacleEggDate.GetValue; }
 
-    internal static int soulForTentacleRoom;
+    private static int SoulForTentacleRoom { get => ModSettingsDateRegister.SoulForTentacleRoomDate.GetValue; }
 
-    internal static int eggForTentacleRoom;
+    private static int EggForTentacleRoom { get => ModSettingsDateRegister.EggForTentacleRoomDate.GetValue; }
 
-    internal static int maxSoul;
+    private static int MaxSoul { get => ModSettingsDateRegister.MaxSoulDate.GetValue; }
 
-    internal static int privateEstateCost;
+    private static int PrivateEstateCost { get => ModSettingsDateRegister.PrivateEstateCostDate.GetValue; }
 
     [HarmonyPatch(nameof(ConfigData.GameSpeedArray), MethodType.Getter)]
     [HarmonyPostfix]
     public static void GameSpeedArrayPostfix(ref float[] __result)
     {
-        if (!enabledGameSpeedExtensions) return;
+        if (!EnabledGameSpeedExtensions) return;
         __result = [1f, 1.5f, 2f, 3f, 4f, 5f, 6f, 7f, 8f, 9f, 10f];
     }
 
@@ -52,7 +53,7 @@ internal class ConfigDataPatch
     [HarmonyPostfix]
     public static void ProbabilityOfEscapingArrayPostfix(ref float[] __result)
     {
-        if (!enabledDisableSlaveEscape) return;
+        if (!EnabledDisableSlaveEscape) return;
         __result = [0, 0, 0, 0, 0, 0];
     }
 
@@ -60,104 +61,104 @@ internal class ConfigDataPatch
     [HarmonyPostfix]
     public static void PercentThatChangesToDrainPostfix(ref float __result)
     {
-        __result = percentThatChangesToDrain;
+        __result = PercentThatChangesToDrain;
     }
 
     [HarmonyPatch(nameof(ConfigData.SecondsOfDay), MethodType.Getter)]
     [HarmonyPostfix]
     public static void SecondsOfDayPostfix(ref float __result)
     {
-        __result = secondsOfDay;
+        __result = SecondsOfDay;
     }
 
     [HarmonyPatch(nameof(ConfigData.RestTime), MethodType.Getter)]
     [HarmonyPostfix]
     public static void RestTimePostfix(ref float __result)
     {
-        __result = restTime;
+        __result = RestTime;
     }
 
     [HarmonyPatch(nameof(ConfigData.TimeBodyDecays), MethodType.Getter)]
     [HarmonyPostfix]
     public static void TimeBodyDecaysPostfix(ref float __result)
     {
-        __result = timeBodyDecays;
+        __result = TimeBodyDecays;
     }
 
     [HarmonyPatch(nameof(ConfigData.StartGold), MethodType.Getter)]
     [HarmonyPostfix]
     public static void StartGoldPostfix(ref int __result)
     {
-        __result = startGold;
+        __result = StartGold;
     }
 
     [HarmonyPatch(nameof(ConfigData.TimeToDieFromVenerealDisease), MethodType.Getter)]
     [HarmonyPostfix]
     public static void TimeToDieFromVenerealDiseasePostfix(ref float __result)
     {
-        __result = timeToDieFromVenerealDisease;
+        __result = TimeToDieFromVenerealDisease;
     }
 
     [HarmonyPatch(nameof(ConfigData.CostOfDisposingCorpse), MethodType.Getter)]
     [HarmonyPostfix]
     public static void CostOfDisposingCorpsePostfix(ref int __result)
     {
-        __result = -costOfDisposingCorpse;
+        __result = -CostOfDisposingCorpse;
     }
 
     [HarmonyPatch(nameof(ConfigData.CostOfDisposingInfertileMonster), MethodType.Getter)]
     [HarmonyPostfix]
     public static void CostOfDisposingInfertileMonsterPostfix(ref int __result)
     {
-        __result = -costOfDisposingInfertileMonster;
+        __result = -CostOfDisposingInfertileMonster;
     }
 
     [HarmonyPatch(nameof(ConfigData.PixyMoveSpeed), MethodType.Getter)]
     [HarmonyPostfix]
     public static void PixyMoveSpeedPostfix(ref float __result)
     {
-        __result = pixyMoveDurationMultiplier;
+        __result = PixyMoveDurationMultiplier;
     }
 
     [HarmonyPatch(nameof(ConfigData.LoanPeriod), MethodType.Getter)]
     [HarmonyPostfix]
     public static void LoanPeriodPostfix(ref int __result)
     {
-        __result = loanPeriod;
+        __result = LoanPeriod;
     }
 
     [HarmonyPatch(nameof(ConfigData.SoulOfTentacleEgg), MethodType.Getter)]
     [HarmonyPostfix]
     public static void SoulOfTentacleEggPostfix(ref int __result)
     {
-        __result = soulOfTentacleEgg;
+        __result = SoulOfTentacleEgg;
     }
 
     [HarmonyPatch(nameof(ConfigData.SoulForTentacleRoom), MethodType.Getter)]
     [HarmonyPostfix]
     public static void SoulForTentacleRoomPostfix(ref int __result)
     {
-        __result = soulForTentacleRoom;
+        __result = SoulForTentacleRoom;
     }
 
     [HarmonyPatch(nameof(ConfigData.EggForTentacleRoom), MethodType.Getter)]
     [HarmonyPostfix]
     public static void EggForTentacleRoomPostfix(ref int __result)
     {
-        __result = eggForTentacleRoom;
+        __result = EggForTentacleRoom;
     }
 
     [HarmonyPatch(nameof(ConfigData.MaxSoul), MethodType.Getter)]
     [HarmonyPostfix]
     public static void MaxSoulPostfix(ref int __result)
     {
-        __result = maxSoul;
+        __result = MaxSoul;
     }
 
     [HarmonyPatch(nameof(ConfigData.PrivateEstateCost), MethodType.Getter)]
     [HarmonyPostfix]
     public static void PrivateEstateCostPostfix(ref int __result)
     {
-        __result = privateEstateCost;
+        __result = PrivateEstateCost;
     }
 }
