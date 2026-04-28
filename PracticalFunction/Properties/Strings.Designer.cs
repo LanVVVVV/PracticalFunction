@@ -250,6 +250,15 @@ namespace PracticalFunction.Properties {
         }
         
         /// <summary>
+        ///   查找类似 Use the Default ConfigData of Tits Mod. 的本地化字符串。
+        /// </summary>
+        internal static string Config_TitsModCompatibility {
+            get {
+                return ResourceManager.GetString("Config_TitsModCompatibility", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Cannot sell during birth. 的本地化字符串。
         /// </summary>
         internal static string Message_NoSellBirth {

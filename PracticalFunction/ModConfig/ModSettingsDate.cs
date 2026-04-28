@@ -16,6 +16,8 @@ public abstract class ModSettingsDate
 
     public abstract void Register(string group);
 
+    public abstract void Register(string group, string visibleKey);
+
     public abstract void Initialize();
 
     public abstract void ModSettingsOnChanged();

@@ -183,4 +183,7 @@
   <data name="Config_OneClickSell" xml:space="preserve">
     <value>Sell Character on Delete Key Press.</value>
   </data>
+  <data name="Config_TitsModCompatibility" xml:space="preserve">
+    <value>Use the Default ConfigData of Tits Mod.</value>
+  </data>
 </root>

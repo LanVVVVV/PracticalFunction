@@ -24,6 +24,12 @@ public sealed class ModSettingsDateRegister
         "Config_DisableSlaveEscape"
     );
 
+    public static readonly ModSettingsDateBool TitsModCompatibilityDate = new (
+        "Tits Mod Compatibility",
+        false,
+        "Config_TitsModCompatibility"
+    );
+
     public static readonly ModSettingsDateBool OneClickSellDate = new(
         "One-Click Sell",
         true,

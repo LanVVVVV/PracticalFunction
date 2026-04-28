@@ -18,6 +18,11 @@ public class ModSettingsDateBool : ModSettingsDate
         ModSettings.RegisterBool(ModEntry.ModName, Name, BoolValue, Description, group);
     }
 
+    public override void Register(string group, string visibleKey)
+    {
+        ModSettings.RegisterBool(ModEntry.ModName, Name, BoolValue, Description, group, visibleKey);
+    }
+
     public override void Initialize()
     {
         BoolValue = ModSettings.GetBool(ModEntry.ModName, Name);

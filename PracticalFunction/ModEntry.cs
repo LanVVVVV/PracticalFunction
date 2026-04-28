@@ -1,6 +1,9 @@
 ﻿using MBM.ModLoader.Core;
+using MBM.ModLoader.Mods;
+using MBM.ModLoader.Settings;
 using PracticalFunction.ModConfig;
 using PracticalFunction.Properties;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace PracticalFunction;
@@ -8,10 +11,12 @@ namespace PracticalFunction;
 public class ModEntry
 {
     internal const string ModName = "PracticalFunction";
+
     public static void Load()
     {
         ModSettingsRegister();
         ModSettingsInitialize();
+        ModSettingsVisible();
         Localization.OnLanguageChanged += OnLanguageChanged;
 
         PracticalFunctionDeployer.Initialize();
@@ -22,6 +27,8 @@ public class ModEntry
 
     private static void ModSettingsRegister()
     {
+        ModSettingsDateRegister.TitsModCompatibilityDate.Register();
+
         ModSettingsDateRegister.DragDuringPauseDate.Register("Base");
 
         ModSettingsDateRegister.GameSpeedExtensionsDate.Register("Base");
@@ -32,27 +39,27 @@ public class ModEntry
         ModSettingsDateRegister.DisableSlaveEscapeDate.Register("Advance");
 
         ModSettingsDateRegister.DismantlingLimitDate.Register("Advance");
-        
+
 
         ModSettingsDateRegister.StartGoldDate.Register("Cost");
 
         ModSettingsDateRegister.PrivateEstateCostDate.Register("Cost");
 
-        ModSettingsDateRegister.CostOfDisposingCorpseDate.Register("Cost");
+        ModSettingsDateRegister.CostOfDisposingCorpseDate.Register("Cost", "TitsModCompatibility");
 
-        ModSettingsDateRegister.CostOfDisposingInfertileMonsterDate.Register("Cost");
+        ModSettingsDateRegister.CostOfDisposingInfertileMonsterDate.Register("Cost", "TitsModCompatibility");
 
 
         ModSettingsDateRegister.PercentThatChangesToDrainDate.Register("Multiplier");
 
-        ModSettingsDateRegister.PixyMoveDurationMultiplierDate.Register("Multiplier");
+        ModSettingsDateRegister.PixyMoveDurationMultiplierDate.Register("Multiplier", "TitsModCompatibility");
 
 
-        ModSettingsDateRegister.SecondsOfDayDate.Register("Time");
+        ModSettingsDateRegister.SecondsOfDayDate.Register("Time", "TitsModCompatibility");
 
         ModSettingsDateRegister.RestTimeDate.Register("Time");
 
-        ModSettingsDateRegister.TimeBodyDecaysDate.Register("Time");
+        ModSettingsDateRegister.TimeBodyDecaysDate.Register("Time", "TitsModCompatibility");
 
         ModSettingsDateRegister.TimeToDieFromVenerealDiseaseDate.Register("Time");
 
@@ -77,6 +84,15 @@ public class ModEntry
             modSetting.Initialize();
             modSetting.ModSettingsOnChanged();
         }
+    }
+
+    private static void ModSettingsVisible()
+    {
+        ModSettings.SetVisibleWhen(ModName, ModSettingsDateRegister.TitsModCompatibilityDate.Name,
+            new Dictionary<string, string[]>
+            {
+                    { "False", new[] { "TitsModCompatibility" } }
+            });
     }
 
     private static void OnLanguageChanged(string langCode)

@@ -17,7 +17,10 @@ public class ModSettingsDateInt : ModSettingsDate
     {
         ModSettings.RegisterInt(ModEntry.ModName, Name, IntValue, Description, group);
     }
-
+    public override void Register(string group, string visibleKey)
+    {
+        ModSettings.RegisterInt(ModEntry.ModName, Name, IntValue, Description, group, visibleKey);
+    }
     public override void Initialize()
     {
         IntValue = ModSettings.GetInt(ModEntry.ModName, Name);

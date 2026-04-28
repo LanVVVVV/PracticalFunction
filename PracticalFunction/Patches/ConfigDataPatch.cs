@@ -7,6 +7,7 @@ namespace PracticalFunction.Patches;
 [HarmonyPatch(typeof(ConfigData))]
 public class ConfigDataPatch
 {
+    private static bool EnabledTitsModCompatibility { get => ModSettingsDateRegister.TitsModCompatibilityDate.GetValue; }
     private static bool EnabledGameSpeedExtensions { get => ModSettingsDateRegister.GameSpeedExtensionsDate.GetValue; }
 
     private static bool EnabledDisableSlaveEscape { get => ModSettingsDateRegister.DisableSlaveEscapeDate.GetValue; }
@@ -68,6 +69,7 @@ public class ConfigDataPatch
     [HarmonyPostfix]
     public static void SecondsOfDayPostfix(ref float __result)
     {
+        if (EnabledTitsModCompatibility) return;
         __result = SecondsOfDay;
     }
 
@@ -82,6 +84,7 @@ public class ConfigDataPatch
     [HarmonyPostfix]
     public static void TimeBodyDecaysPostfix(ref float __result)
     {
+        if (EnabledTitsModCompatibility) return;
         __result = TimeBodyDecays;
     }
 
@@ -96,6 +99,14 @@ public class ConfigDataPatch
     [HarmonyPostfix]
     public static void TimeToDieFromVenerealDiseasePostfix(ref float __result)
     {
+        if (EnabledTitsModCompatibility) return;
+        __result = TimeToDieFromVenerealDisease;
+    }
+    [HarmonyPatch(nameof(ConfigData.TimeToBeInfertileFromVenerealDisease), MethodType.Getter)]
+    [HarmonyPostfix]
+    public static void TimeToBeInfertileFromVenerealDiseasePostfix(ref float __result)
+    {
+        if (EnabledTitsModCompatibility) return;
         __result = TimeToDieFromVenerealDisease;
     }
 
@@ -103,6 +114,7 @@ public class ConfigDataPatch
     [HarmonyPostfix]
     public static void CostOfDisposingCorpsePostfix(ref int __result)
     {
+        if (EnabledTitsModCompatibility) return;
         __result = -CostOfDisposingCorpse;
     }
 
@@ -110,6 +122,7 @@ public class ConfigDataPatch
     [HarmonyPostfix]
     public static void CostOfDisposingInfertileMonsterPostfix(ref int __result)
     {
+        if (EnabledTitsModCompatibility) return;
         __result = -CostOfDisposingInfertileMonster;
     }
 
@@ -117,6 +130,7 @@ public class ConfigDataPatch
     [HarmonyPostfix]
     public static void PixyMoveSpeedPostfix(ref float __result)
     {
+        if (EnabledTitsModCompatibility) return;
         __result = PixyMoveDurationMultiplier;
     }
 

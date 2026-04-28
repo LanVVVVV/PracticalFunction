@@ -18,6 +18,11 @@ public class ModSettingsDateFloat : ModSettingsDate
         ModSettings.RegisterFloat(ModEntry.ModName, Name, FloatValue, Description, group);
     }
 
+    public override void Register(string group, string visibleKey)
+    {
+        ModSettings.RegisterFloat(ModEntry.ModName, Name, FloatValue, Description, group, visibleKey);
+    }
+
     public override void Initialize()
     {
         FloatValue = ModSettings.GetFloat(ModEntry.ModName, Name);
