@@ -166,7 +166,7 @@
     <value>最大精气储量。</value>
   </data>
   <data name="Config_PrivateEstateCost" xml:space="preserve">
-    <value>个人领地价格。（不影响工具提示）</value>
+    <value>个人领地价格。</value>
   </data>
   <data name="Config_DisableSlaveEscape" xml:space="preserve">
     <value>阻止奴隶从妓院逃跑。</value>

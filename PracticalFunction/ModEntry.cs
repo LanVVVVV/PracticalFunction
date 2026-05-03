@@ -3,6 +3,7 @@ using MBM.ModLoader.Mods;
 using MBM.ModLoader.Settings;
 using MBMScripts;
 using PracticalFunction.ModConfig;
+using PracticalFunction.Patches;
 using PracticalFunction.Properties;
 using System.Collections.Generic;
 using UnityEngine;
@@ -106,6 +107,8 @@ public class ModEntry
         {
             modSetting.OnLanguageChanged();
         }
+
+        SeqLocalizationPatch.SetDefaultPrivateEstateCost();
 
         Log($"language changed: {langCode}");
     }

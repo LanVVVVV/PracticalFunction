@@ -12,7 +12,7 @@ PracticalFunction is a mod for **Monster Black Market** —— adding some Pract
 | Function    | One-Click Sell                              | Sell Character on Delete Key Press.                                        |
 | Function    | Dismantling Limit                           | Flora's Overwork Dismantle Limit (-1 = Immune to overwork).                |
 | Customizing | Start Gold                                  | Initial Funds at Game Start.                                               |
-| Customizing | Private Estate Cost                         | Personal Estate Price.(Does not affect tooltips)                           |
+| Customizing | Private Estate Cost                         | Personal Estate Price.                                                     |
 | Customizing | Cost Of Disposing Corpse                    | Slave Corpse Disposal Cost.                                                |
 | Customizing | Cost Of Disposing Infertile Monster         | Infertile Monster Disposal Cost.                                           |
 | Customizing | Percent That Changes To Drain               | The percentage of Health at which a Slave becomes Drained.                 |
@@ -34,3 +34,7 @@ PracticalFunction is a mod for **Monster Black Market** —— adding some Pract
 | -------------------- | ------- |
 | MBM.ModLoader        | latest  |
 | Monster Black Market | latest  |
+
+### Compatibility
+
+- ✅ **TitsMod** — allow using the Default ConfigData of Tits Mod.

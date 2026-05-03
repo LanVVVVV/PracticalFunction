@@ -166,7 +166,7 @@
     <value>Maximum Essence Storage.</value>
   </data>
   <data name="Config_PrivateEstateCost" xml:space="preserve">
-    <value>Personal Estate Price.(Does not affect tooltips)</value>
+    <value>Personal Estate Price.</value>
   </data>
   <data name="Config_DisableSlaveEscape" xml:space="preserve">
     <value>Prevent Slave Escape from Brothel.</value>
