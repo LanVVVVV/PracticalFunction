@@ -1,6 +1,7 @@
 ﻿using MBM.ModLoader.Core;
 using MBM.ModLoader.Mods;
 using MBM.ModLoader.Settings;
+using MBMScripts;
 using PracticalFunction.ModConfig;
 using PracticalFunction.Properties;
 using System.Collections.Generic;
@@ -11,6 +12,8 @@ namespace PracticalFunction;
 public class ModEntry
 {
     internal const string ModName = "PracticalFunction";
+
+    internal static float TitsModSecondsOfDay {  get; } = 600;
 
     public static void Load()
     {

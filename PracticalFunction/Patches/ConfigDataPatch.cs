@@ -65,13 +65,26 @@ public class ConfigDataPatch
         __result = PercentThatChangesToDrain;
     }
 
+    // To solve Inlined Methods problem.
     [HarmonyPatch(nameof(ConfigData.SecondsOfDay), MethodType.Getter)]
-    [HarmonyPostfix]
-    public static void SecondsOfDayPostfix(ref float __result)
+    [HarmonyPrefix]
+    public static void SecondsOfDayPrefix(ref float ___m_SecondsOfDay)
     {
-        if (EnabledTitsModCompatibility) return;
-        __result = SecondsOfDay;
+        if (EnabledTitsModCompatibility && ___m_SecondsOfDay != ModEntry.TitsModSecondsOfDay) 
+        {
+            ___m_SecondsOfDay = ModEntry.TitsModSecondsOfDay;
+            return; 
+        }
+        if (___m_SecondsOfDay != SecondsOfDay) ___m_SecondsOfDay = SecondsOfDay;
     }
+
+    //[HarmonyPatch(nameof(ConfigData.SecondsOfDay), MethodType.Getter)]
+    //[HarmonyPostfix]
+    //public static void SecondsOfDayPostfix(ref float __result)
+    //{
+    //    if (EnabledTitsModCompatibility) return;
+    //    __result = SecondsOfDay;
+    //}
 
     [HarmonyPatch(nameof(ConfigData.RestTime), MethodType.Getter)]
     [HarmonyPostfix]
