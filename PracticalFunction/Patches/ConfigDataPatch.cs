@@ -7,40 +7,41 @@ namespace PracticalFunction.Patches;
 [HarmonyPatch(typeof(ConfigData))]
 public class ConfigDataPatch
 {
-    private static bool EnabledTitsModCompatibility { get => ModSettingsDateRegister.TitsModCompatibilityDate.GetValue; }
-    private static bool EnabledGameSpeedExtensions { get => ModSettingsDateRegister.GameSpeedExtensionsDate.GetValue; }
+    private static bool EnabledTitsModCompatibility => ModSettingsDateRegister.TitsModCompatibilityDate.GetValue;
+    
+    private static bool EnabledGameSpeedExtensions => ModSettingsDateRegister.GameSpeedExtensionsDate.GetValue;
 
-    private static bool EnabledDisableSlaveEscape { get => ModSettingsDateRegister.DisableSlaveEscapeDate.GetValue; }
+    private static bool EnabledDisableSlaveEscape => ModSettingsDateRegister.DisableSlaveEscapeDate.GetValue;
 
-    private static float PercentThatChangesToDrain { get => ModSettingsDateRegister.PercentThatChangesToDrainDate.GetValue; }
+    private static float PercentThatChangesToDrain => ModSettingsDateRegister.PercentThatChangesToDrainDate.GetValue;
 
-    private static float SecondsOfDay { get => ModSettingsDateRegister.SecondsOfDayDate.GetValue; }
+    private static float SecondsOfDay => ModSettingsDateRegister.SecondsOfDayDate.GetValue;
 
-    private static float RestTime { get => ModSettingsDateRegister.RestTimeDate.GetValue; }
+    private static float RestTime => ModSettingsDateRegister.RestTimeDate.GetValue;
 
-    private static float TimeBodyDecays { get => ModSettingsDateRegister.TimeBodyDecaysDate.GetValue; }
+    private static float TimeBodyDecays => ModSettingsDateRegister.TimeBodyDecaysDate.GetValue;
 
-    private static int StartGold { get => ModSettingsDateRegister.StartGoldDate.GetValue; }
+    private static int StartGold => ModSettingsDateRegister.StartGoldDate.GetValue;
 
-    private static float TimeToDieFromVenerealDisease { get => ModSettingsDateRegister.TimeToDieFromVenerealDiseaseDate.GetValue; }
+    private static float TimeToDieFromVenerealDisease => ModSettingsDateRegister.TimeToDieFromVenerealDiseaseDate.GetValue;
 
-    private static int CostOfDisposingCorpse { get => ModSettingsDateRegister.CostOfDisposingCorpseDate.GetValue; }
+    private static int CostOfDisposingCorpse => ModSettingsDateRegister.CostOfDisposingCorpseDate.GetValue;
 
-    private static int CostOfDisposingInfertileMonster { get => ModSettingsDateRegister.CostOfDisposingInfertileMonsterDate.GetValue; }
+    private static int CostOfDisposingInfertileMonster => ModSettingsDateRegister.CostOfDisposingInfertileMonsterDate.GetValue;
 
-    private static float PixyMoveDurationMultiplier { get => ModSettingsDateRegister.PixyMoveDurationMultiplierDate.GetValue; }
+    private static float PixyMoveDurationMultiplier => ModSettingsDateRegister.PixyMoveDurationMultiplierDate.GetValue;
 
-    private static int LoanPeriod { get => ModSettingsDateRegister.LoanPeriodDate.GetValue; }
+    private static int LoanPeriod => ModSettingsDateRegister.LoanPeriodDate.GetValue;
 
-    private static int SoulOfTentacleEgg { get => ModSettingsDateRegister.SoulOfTentacleEggDate.GetValue; }
+    private static int SoulOfTentacleEgg => ModSettingsDateRegister.SoulOfTentacleEggDate.GetValue;
 
-    private static int SoulForTentacleRoom { get => ModSettingsDateRegister.SoulForTentacleRoomDate.GetValue; }
+    private static int SoulForTentacleRoom => ModSettingsDateRegister.SoulForTentacleRoomDate.GetValue;
 
-    private static int EggForTentacleRoom { get => ModSettingsDateRegister.EggForTentacleRoomDate.GetValue; }
+    private static int EggForTentacleRoom => ModSettingsDateRegister.EggForTentacleRoomDate.GetValue;
 
-    private static int MaxSoul { get => ModSettingsDateRegister.MaxSoulDate.GetValue; }
+    private static int MaxSoul => ModSettingsDateRegister.MaxSoulDate.GetValue;
 
-    private static int PrivateEstateCost { get => ModSettingsDateRegister.PrivateEstateCostDate.GetValue; }
+    private static int PrivateEstateCost => ModSettingsDateRegister.PrivateEstateCostDate.GetValue;
 
     [HarmonyPatch(nameof(ConfigData.GameSpeedArray), MethodType.Getter)]
     [HarmonyPostfix]

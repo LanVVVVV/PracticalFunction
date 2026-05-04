@@ -6,7 +6,7 @@ public class ModSettingsDateFloat : ModSettingsDate
 {
     public float FloatValue { get; set; }
 
-    public float GetValue { get => FloatValue; }
+    public float GetValue => FloatValue;
 
     public override void Register()
     {

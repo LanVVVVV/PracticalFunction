@@ -7,7 +7,7 @@ namespace PracticalFunction.Features;
 
 public static class OneClickSell
 {
-    private static bool Enabled { get => ModSettingsDateRegister.OneClickSellDate.GetValue; }
+    private static bool Enabled => ModSettingsDateRegister.OneClickSellDate.GetValue;
 
     public static void OnKeyPress()
     {

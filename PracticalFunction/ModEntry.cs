@@ -1,7 +1,5 @@
 ﻿using MBM.ModLoader.Core;
-using MBM.ModLoader.Mods;
 using MBM.ModLoader.Settings;
-using MBMScripts;
 using PracticalFunction.ModConfig;
 using PracticalFunction.Patches;
 using PracticalFunction.Properties;

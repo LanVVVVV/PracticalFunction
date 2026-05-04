@@ -17,7 +17,7 @@ public class SeqLocalizationPatch
     };
 
     private static string DefaultPrivateEstateCost { get; set; } = "50,000";
-    private static string PrivateEstateCost { get => ModSettingsDateRegister.PrivateEstateCostDate.GetValue.ToString(); }
+    private static string PrivateEstateCost => ModSettingsDateRegister.PrivateEstateCostDate.GetValue.ToString(); 
 
     internal static void SetDefaultPrivateEstateCost()
     {
@@ -32,7 +32,6 @@ public class SeqLocalizationPatch
     public static void LocalizePostfix(ref string __result, string text)
     {
         if (text != "#BuyPrivateEstate") return;
-        ModEntry.Log(__result);
         __result = __result.Replace(DefaultPrivateEstateCost, PrivateEstateCost);
     }
 }

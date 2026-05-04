@@ -7,7 +7,7 @@ namespace PracticalFunction.Patches;
 [HarmonyPatch(typeof(EPlayEventTypeExtensions))]
 public class EPlayEventTypeExtensionsPatch
 {
-    private static int DismantlingLimit { get => ModSettingsDateRegister.DismantlingLimitDate.GetValue; }
+    private static int DismantlingLimit => ModSettingsDateRegister.DismantlingLimitDate.GetValue;
 
     [HarmonyPatch(nameof(EPlayEventTypeExtensions.GetValue))]
     [HarmonyPostfix]

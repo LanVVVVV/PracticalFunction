@@ -6,7 +6,7 @@ public class ModSettingsDateInt : ModSettingsDate
 {
     public int IntValue { get; set; }
 
-    public int GetValue { get => IntValue; }
+    public int GetValue => IntValue;
 
     public override void Register()
     {

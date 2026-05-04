@@ -7,7 +7,7 @@ namespace PracticalFunction.Patches;
 [HarmonyPatch(typeof(InteractionUnit), nameof(InteractionUnit.Drag))]
 public class InteractionDragPatch
 {
-    private static bool EnabledDragDuringPause { get => ModSettingsDateRegister.DragDuringPauseDate.GetValue; }
+    private static bool EnabledDragDuringPause => ModSettingsDateRegister.DragDuringPauseDate.GetValue;
 
     /// <summary>
     /// Bypass GameSpeedIsZero and Record the original value.

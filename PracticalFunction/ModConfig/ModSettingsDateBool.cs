@@ -6,7 +6,7 @@ public class ModSettingsDateBool : ModSettingsDate
 {
     public bool BoolValue { get; set; }
 
-    public bool GetValue { get => BoolValue; }
+    public bool GetValue => BoolValue;
 
     public override void Register()
     {

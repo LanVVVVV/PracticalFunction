@@ -7,7 +7,7 @@ namespace PracticalFunction.Patches;
 [HarmonyPatch(typeof(Unit))]
 public class UnitPatch
 {
-    private static int PriceTentacleEgg { get => ModSettingsDateRegister.PriceTentacleEggDate.GetValue; }
+    private static int PriceTentacleEgg => ModSettingsDateRegister.PriceTentacleEggDate.GetValue;
 
     [HarmonyPatch(nameof(Unit.Price), MethodType.Getter)]
     [HarmonyPostfix]
