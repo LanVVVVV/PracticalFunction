@@ -13,6 +13,8 @@ public class RoomBuildPatch
     [HarmonyPostfix]
     public static void OnStartPostfix(Room __instance)
     {
+        if (__instance.RoomType == ERoomType.Pillar) return;
+
         BoxCollider2D collider = __instance.UnitComponent.transform.Find("Collider").GetComponent<BoxCollider2D>();
         collider.enabled = false;
         collider.enabled = true;
