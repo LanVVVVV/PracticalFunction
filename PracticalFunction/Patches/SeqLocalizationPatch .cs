@@ -31,7 +31,10 @@ public class SeqLocalizationPatch
     [HarmonyPostfix]
     public static void LocalizePostfix(ref string __result, string text)
     {
-        if (text != "#BuyPrivateEstate") return;
-        __result = __result.Replace(DefaultPrivateEstateCost, PrivateEstateCost);
+        if (text != "#BuyPrivateEstate" && text != "#StoryText58400") return;
+        string cost;
+        if (text == "#BuyPrivateEstate") cost = DefaultPrivateEstateCost;
+        else cost =  "50000";
+        __result = __result.Replace(cost, PrivateEstateCost);
     }
 }
