@@ -34,5 +34,5 @@ public abstract class ModSettingsDate
         ModSettingsDateRegister.All.Add(this);
     }
 
-    private string description;
+    private string description = null!;
 }
