@@ -1,12 +1,15 @@
 ﻿using MBM.ModLoader.Settings;
+using System;
 
 namespace PracticalFunction.ModConfig;
 
-public class ModSettingsDateFloat : ModSettingsDate
+public class ModSettingsDataFloat : ModSettingsData
 {
     public float FloatValue { get; set; }
 
     public float GetValue => FloatValue;
+
+    public event Action<ModSettingsDataFloat>? OnModSettingsChange;
 
     public override void Register()
     {
@@ -35,10 +38,11 @@ public class ModSettingsDateFloat : ModSettingsDate
             if (FloatValue == (float)v) return;
             FloatValue = (float)v;
             ModEntry.Log($"{Name} = {FloatValue}");
+            OnModSettingsChange?.Invoke(this);
         });
     }
 
-    public ModSettingsDateFloat(string name, float defaultValue, string description) : base(name, description)
+    public ModSettingsDataFloat(string name, float defaultValue, string description) : base(name, description)
     {
         FloatValue = defaultValue;
     }

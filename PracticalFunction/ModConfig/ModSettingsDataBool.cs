@@ -1,12 +1,15 @@
 ﻿using MBM.ModLoader.Settings;
+using System;
 
 namespace PracticalFunction.ModConfig;
 
-public class ModSettingsDateBool : ModSettingsDate
+public class ModSettingsDataBool : ModSettingsData
 {
     public bool BoolValue { get; set; }
 
     public bool GetValue => BoolValue;
+
+    public event Action<ModSettingsDataBool>? OnModSettingsChange;
 
     public override void Register()
     {
@@ -35,10 +38,11 @@ public class ModSettingsDateBool : ModSettingsDate
             if (BoolValue == (bool)v) return;
             BoolValue = (bool)v;
             ModEntry.Log($"{Name} = {BoolValue}");
+            OnModSettingsChange?.Invoke(this);
         });
     }
 
-    public ModSettingsDateBool(string name, bool defaultValue, string description) : base(name, description)
+    public ModSettingsDataBool(string name, bool defaultValue, string description) : base(name, description)
     {
         BoolValue = defaultValue;
     }

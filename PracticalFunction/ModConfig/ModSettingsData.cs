@@ -3,7 +3,7 @@ using PracticalFunction.Properties;
 
 namespace PracticalFunction.ModConfig;
 
-public abstract class ModSettingsDate
+public abstract class ModSettingsData
 {
     public string Name { get; set; }
 
@@ -27,11 +27,11 @@ public abstract class ModSettingsDate
         ModSettings.SetDescription(ModEntry.ModName, Name, Description);
     }
 
-    public ModSettingsDate(string name, string description)
+    public ModSettingsData(string name, string description)
     {
         Name = name;
         Description = description;
-        ModSettingsDateRegister.All.Add(this);
+        ModSettingsDataRegister.All.Add(this);
     }
 
     private string description = null!;

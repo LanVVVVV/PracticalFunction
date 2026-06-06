@@ -17,7 +17,7 @@ public class SeqLocalizationPatch
     };
 
     private static string DefaultPrivateEstateCost { get; set; } = "50,000";
-    private static string PrivateEstateCost => ModSettingsDateRegister.PrivateEstateCostDate.GetValue.ToString(); 
+    private static string PrivateEstateCost => ModSettingsDataRegister.PrivateEstateCostData.GetValue.ToString(); 
 
     internal static void SetDefaultPrivateEstateCost()
     {

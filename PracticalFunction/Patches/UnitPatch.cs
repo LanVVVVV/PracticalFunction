@@ -4,16 +4,20 @@ using PracticalFunction.ModConfig;
 
 namespace PracticalFunction.Patches;
 
-[HarmonyPatch(typeof(Unit))]
-public class UnitPatch
+[HarmonyPatch(typeof(Unit), nameof(Unit.Price), MethodType.Getter)]
+public static class UnitPatch
 {
-    private static int PriceTentacleEgg => ModSettingsDateRegister.PriceTentacleEggDate.GetValue;
+    private static int PriceTentacleEgg => ModSettingsDataRegister.PriceTentacleEggData.GetValue;
 
-    [HarmonyPatch(nameof(Unit.Price), MethodType.Getter)]
-    [HarmonyPostfix]
-    public static void PricePostfix(Unit __instance, ref int __result)
+    [HarmonyPrefix]
+    public static bool PricePrefix(Unit __instance, ref int __result)
     {
-        if (__instance is Item item && item.ItemType == EItemType.Item_TentacleEgg)
+        if(__instance is Item item && item.ItemType == EItemType.Item_TentacleEgg)
+        {
+            SeqDataBinding.Instance.RegisterFlag(__instance, "Price");
             __result = PriceTentacleEgg;
+            return false;
+        }
+        return true;
     }
 }

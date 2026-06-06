@@ -1,8 +1,10 @@
 ﻿using MBM.ModLoader.Core;
 using MBM.ModLoader.Settings;
+using PracticalFunction.Features;
 using PracticalFunction.ModConfig;
 using PracticalFunction.Patches;
 using PracticalFunction.Properties;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,96 +14,98 @@ public class ModEntry
 {
     internal const string ModName = "PracticalFunction";
 
-    internal static float TitsModSecondsOfDay {  get; } = 600;
-
     public static void Load()
     {
         ModSettingsRegister();
         ModSettingsInitialize();
-        ModSettingsVisible();
+
+        GameManagerPatch.AfterDataInitialized += ModSettingsVisible;
+        GameManagerPatch.AfterDataInitialized += ModSettingsDataRegisterEvents.RegisterEvents;
+        DataModifyInitialize();
+
         Localization.OnLanguageChanged += OnLanguageChanged;
 
         PracticalFunctionDeployer.Initialize();
 
         Log("PracticalFunction Mod loaded!");
     }
+
+    private static void DataModifyInitialize()
+    {
+        GameManagerPatch.AfterDataInitialized += ConfigDataUpdater.ApplyAll;
+        GameManagerPatch.AfterDataInitialized += EventDataUpdater.ApplyAll;
+    }
+
     internal static void Log(string msg) => Debug.Log($"[PF] {msg}");
+
+    internal static void LogError(string msg) => Debug.LogError($"[PF] {msg}");
 
     private static void ModSettingsRegister()
     {
-        ModSettingsDateRegister.TitsModCompatibilityDate.Register();
+        ModSettingsDataRegister.TitsModCompatibilityData.Register("TitsMod", "TitsMod");
 
-        ModSettingsDateRegister.DragDuringPauseDate.Register("Base");
+        ModSettingsDataRegister.DragDuringPauseData.Register("Base");
 
-        ModSettingsDateRegister.GameSpeedExtensionsDate.Register("Base");
+        ModSettingsDataRegister.GameSpeedExtensionsData.Register("Base");
 
-        ModSettingsDateRegister.OneClickSellDate.Register("Base");
-
-
-        ModSettingsDateRegister.DisableSlaveEscapeDate.Register("Advance");
-
-        ModSettingsDateRegister.DismantlingLimitDate.Register("Advance");
+        ModSettingsDataRegister.OneClickSellData.Register("Base");
 
 
-        ModSettingsDateRegister.StartGoldDate.Register("Cost");
+        ModSettingsDataRegister.DisableSlaveEscapeData.Register("Advance");
 
-        ModSettingsDateRegister.PrivateEstateCostDate.Register("Cost");
-
-        ModSettingsDateRegister.CostOfDisposingCorpseDate.Register("Cost", "TitsModCompatibility");
-
-        ModSettingsDateRegister.CostOfDisposingInfertileMonsterDate.Register("Cost", "TitsModCompatibility");
+        ModSettingsDataRegister.DismantlingLimitData.Register("Advance");
 
 
-        ModSettingsDateRegister.PercentThatChangesToDrainDate.Register("Multiplier");
+        ModSettingsDataRegister.StartGoldData.Register("Cost");
 
-        ModSettingsDateRegister.PixyMoveDurationMultiplierDate.Register("Multiplier", "TitsModCompatibility");
+        ModSettingsDataRegister.PrivateEstateCostData.Register("Cost");
 
+        ModSettingsDataRegister.CostOfDisposingCorpseData.Register("Cost", "TitsModCompatibility");
 
-        ModSettingsDateRegister.SecondsOfDayDate.Register("Time", "TitsModCompatibility");
-
-        ModSettingsDateRegister.RestTimeDate.Register("Time");
-
-        ModSettingsDateRegister.TimeBodyDecaysDate.Register("Time", "TitsModCompatibility");
-
-        ModSettingsDateRegister.TimeToDieFromVenerealDiseaseDate.Register("Time");
-
-        ModSettingsDateRegister.LoanPeriodDate.Register("Time");
+        ModSettingsDataRegister.CostOfDisposingInfertileMonsterData.Register("Cost", "TitsModCompatibility");
 
 
-        ModSettingsDateRegister.MaxSoulDate.Register("Tentacle");
+        ModSettingsDataRegister.PercentThatChangesToDrainData.Register("Multiplier");
 
-        ModSettingsDateRegister.PriceTentacleEggDate.Register("Tentacle");
+        ModSettingsDataRegister.PixyMoveDurationMultiplierData.Register("Multiplier", "TitsModCompatibility");
 
-        ModSettingsDateRegister.SoulOfTentacleEggDate.Register("Tentacle");
 
-        ModSettingsDateRegister.SoulForTentacleRoomDate.Register("Tentacle");
+        ModSettingsDataRegister.SecondsOfDayData.Register("Time", "TitsModCompatibility");
 
-        ModSettingsDateRegister.EggForTentacleRoomDate.Register("Tentacle");
+        ModSettingsDataRegister.RestTimeData.Register("Time");
+
+        ModSettingsDataRegister.TimeBodyDecaysData.Register("Time", "TitsModCompatibility");
+
+        ModSettingsDataRegister.TimeToDieFromVenerealDiseaseData.Register("Time", "TitsModCompatibility");
+
+        ModSettingsDataRegister.LoanPeriodData.Register("Time");
+
+
+        ModSettingsDataRegister.MaxSoulData.Register("Tentacle");
+
+        ModSettingsDataRegister.PriceTentacleEggData.Register("Tentacle");
+
+        ModSettingsDataRegister.SoulOfTentacleEggData.Register("Tentacle");
+
+        ModSettingsDataRegister.SoulForTentacleRoomData.Register("Tentacle");
+
+        ModSettingsDataRegister.EggForTentacleRoomData.Register("Tentacle");
     }
 
     private static void ModSettingsInitialize()
     {
-        foreach (ModSettingsDate modSetting in ModSettingsDateRegister.All)
+        foreach (ModSettingsData modSetting in ModSettingsDataRegister.All)
         {
             modSetting.Initialize();
             modSetting.ModSettingsOnChanged();
         }
     }
 
-    private static void ModSettingsVisible()
-    {
-        ModSettings.SetVisibleWhen(ModName, ModSettingsDateRegister.TitsModCompatibilityDate.Name,
-            new Dictionary<string, string[]>
-            {
-                    { "False", new[] { "TitsModCompatibility" } }
-            });
-    }
-
     private static void OnLanguageChanged(string langCode)
     {
         Strings.Culture = Localization.CurrentCulture;
 
-        foreach (ModSettingsDate modSetting in ModSettingsDateRegister.All)
+        foreach (ModSettingsData modSetting in ModSettingsDataRegister.All)
         {
             modSetting.OnLanguageChanged();
         }
@@ -109,5 +113,41 @@ public class ModEntry
         SeqLocalizationPatch.SetDefaultPrivateEstateCost();
 
         Log($"language changed: {langCode}");
+    }
+
+    private static void ModSettingsVisible()
+    {
+        if(IsTitsModEnabled())
+        {
+            ModSettings.SetVisibleWhen(ModName, ModSettingsDataRegister.TitsModCompatibilityData.Name,
+            new Dictionary<string, string[]>
+            {
+                    { "False", new[] { "TitsModCompatibility" } }
+            });
+            return;
+        }
+
+        // Hidden
+        ModSettings.Set(ModName, ModSettingsDataRegister.TitsModCompatibilityData.Name, false);
+        ModSettings.SetVisibleWhen(ModName, ModSettingsDataRegister.TitsModCompatibilityData.Name,
+            new Dictionary<string, string[]>
+            {
+                    { "True", new[] { "TitsMod" } }
+            });
+        Log("Hidden: Tits Mod Compatibility.");
+    }
+
+    private static bool IsTitsModEnabled()
+    {
+        foreach (var mod in Loader.Mods)
+        {
+            if (string.Equals(mod.FileName, "TitsMod", StringComparison.OrdinalIgnoreCase))
+            {
+                Log("Detected: Tits Mod enabled.");
+                return mod.Enabled;
+            }
+        }
+        Log("Detected: Tits Mod disabled.");
+        return false;
     }
 }
