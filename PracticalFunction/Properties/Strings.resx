@@ -186,4 +186,7 @@
   <data name="Config_TitsModCompatibility" xml:space="preserve">
     <value>Use the Default ConfigData of Tits Mod.</value>
   </data>
+  <data name="Config_AllowDNAWithoutNiel" xml:space="preserve">
+    <value>Dismantling can produce DNA even before unlocking Niel.</value>
+  </data>
 </root>

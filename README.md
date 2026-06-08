@@ -11,6 +11,7 @@ PracticalFunction is a mod for **Monster Black Market** —— adding some Pract
 | Function    | Disable Slave Escape                        | Prevent Slave Escape from Brothel.                                         |
 | Function    | One-Click Sell                              | Sell Character on Delete Key Press.                                        |
 | Function    | Dismantling Limit                           | Flora's Overwork Dismantle Limit (-1 = Immune to overwork).                |
+| Function    | Allow DNA Without Niel                      | Dismantling can produce DNA even before unlocking Niel.                    |
 | Customizing | Start Gold                                  | Initial Funds at Game Start.                                               |
 | Customizing | Private Estate Cost                         | Personal Estate Price.                                                     |
 | Customizing | Cost Of Disposing Corpse                    | Slave Corpse Disposal Cost.                                                |

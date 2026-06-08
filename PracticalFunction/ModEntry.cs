@@ -55,6 +55,8 @@ public class ModEntry
 
         ModSettingsDataRegister.DismantlingLimitData.Register("Advance");
 
+        ModSettingsDataRegister.AllowDNAWithoutNiel.Register("Advance");
+
 
         ModSettingsDataRegister.StartGoldData.Register("Cost");
 

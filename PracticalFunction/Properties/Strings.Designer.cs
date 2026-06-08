@@ -61,6 +61,15 @@ namespace PracticalFunction.Properties {
         }
         
         /// <summary>
+        ///   查找类似 Dismantling can produce DNA even before unlocking Niel. 的本地化字符串。
+        /// </summary>
+        internal static string Config_AllowDNAWithoutNiel {
+            get {
+                return ResourceManager.GetString("Config_AllowDNAWithoutNiel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Body decays time in seconds. 的本地化字符串。
         /// </summary>
         internal static string Config_BodyDecaysTime {
@@ -214,7 +223,7 @@ namespace PracticalFunction.Properties {
         }
         
         /// <summary>
-        ///   查找类似 Personal Estate Price.(Does not affect tooltips) 的本地化字符串。
+        ///   查找类似 Personal Estate Price. 的本地化字符串。
         /// </summary>
         internal static string Config_PrivateEstateCost {
             get {

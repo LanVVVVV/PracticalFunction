@@ -186,4 +186,7 @@
   <data name="Config_TitsModCompatibility" xml:space="preserve">
     <value>使用 Tits Mod 的默认设置。</value>
   </data>
+  <data name="Config_AllowDNAWithoutNiel" xml:space="preserve">
+    <value>在解锁妮艾尔前解体也能产生DNA。</value>
+  </data>
 </root>

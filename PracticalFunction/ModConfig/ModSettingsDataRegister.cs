@@ -10,7 +10,7 @@ public sealed class ModSettingsDataRegister
         "Drag During Pause",
         true,
         "Config_DragDuringPause"
-);
+    );
 
     public static readonly ModSettingsDataBool GameSpeedExtensionsData = new (
         "Game Speed Extensions",
@@ -34,6 +34,12 @@ public sealed class ModSettingsDataRegister
         "One-Click Sell",
         true,
         "Config_OneClickSell"
+    );
+
+    public static readonly ModSettingsDataBool AllowDNAWithoutNiel = new(
+        "Allow DNA Without Niel",
+        false,
+        "Config_AllowDNAWithoutNiel"
     );
 
     public static readonly ModSettingsDataFloat PercentThatChangesToDrainData = new (
