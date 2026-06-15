@@ -8,7 +8,7 @@
 		<Authors>LanFengVVV</Authors>
 		<Company>LanFengVVV </Company>
 		<Description>$(AssemblyName) Mod for Monster Black Market, using MBM.ModLoader</Description>
-		<MBM>..\..\..\MBM.ModLoader\Monster_Black_Market_v2.1.1.0DLC - MBM.ModLoader</MBM>
+		<MBM>..\..\..\MBM.ModLoader For v2.1.2.0\Monster_Black_Market_v2.1.2.0 - MBM.ModLoader</MBM>
 	</PropertyGroup>
 
 	<ItemGroup>
