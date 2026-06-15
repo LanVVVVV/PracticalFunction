@@ -4,7 +4,6 @@ using PracticalFunction.Features;
 using PracticalFunction.ModConfig;
 using PracticalFunction.Patches;
 using PracticalFunction.Properties;
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -19,9 +18,9 @@ public class ModEntry
         ModSettingsRegister();
         ModSettingsInitialize();
 
-        GameManagerPatch.AfterDataInitialized += ModSettingsVisible;
-        GameManagerPatch.AfterDataInitialized += ModSettingsDataRegisterEvents.RegisterEvents;
-        DataModifyInitialize();
+        Loader.OnAllModsLoaded += ModSettingsVisible;
+
+        GameManagerPatch.AfterDataInitialized += DataModifyInitialize;
 
         Localization.OnLanguageChanged += OnLanguageChanged;
 
@@ -32,8 +31,10 @@ public class ModEntry
 
     private static void DataModifyInitialize()
     {
-        GameManagerPatch.AfterDataInitialized += ConfigDataUpdater.ApplyAll;
-        GameManagerPatch.AfterDataInitialized += EventDataUpdater.ApplyAll;
+        ModSettingsDataRegisterEvents.RegisterEvents();
+
+        ConfigDataUpdater.ApplyAll();
+        EventDataUpdater.ApplyAll();
     }
 
     internal static void Log(string msg) => Debug.Log($"[PF] {msg}");
@@ -119,7 +120,7 @@ public class ModEntry
 
     private static void ModSettingsVisible()
     {
-        if(IsTitsModEnabled())
+        if(Loader.IsModLoaded("TitsMod"))
         {
             ModSettings.SetVisibleWhen(ModName, ModSettingsDataRegister.TitsModCompatibilityData.Name,
             new Dictionary<string, string[]>
@@ -137,19 +138,5 @@ public class ModEntry
                     { "True", new[] { "TitsMod" } }
             });
         Log("Hidden: Tits Mod Compatibility.");
-    }
-
-    private static bool IsTitsModEnabled()
-    {
-        foreach (var mod in Loader.Mods)
-        {
-            if (string.Equals(mod.FileName, "TitsMod", StringComparison.OrdinalIgnoreCase))
-            {
-                Log("Detected: Tits Mod enabled.");
-                return mod.Enabled;
-            }
-        }
-        Log("Detected: Tits Mod disabled.");
-        return false;
     }
 }

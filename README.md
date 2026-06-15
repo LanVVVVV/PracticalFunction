@@ -31,10 +31,10 @@ PracticalFunction is a mod for **Monster Black Market** —— adding some Pract
 
 ### Requirements
 
-| Dependency           | Version |
-| -------------------- | ------- |
-| MBM.ModLoader        | latest  |
-| Monster Black Market | latest  |
+| Dependency           | Version    |
+| -------------------- | ---------- |
+| MBM.ModLoader        | ≥ 0.6.0    |
+| Monster Black Market | ≥ 2.1.2.0  |
 
 ### Compatibility
 
