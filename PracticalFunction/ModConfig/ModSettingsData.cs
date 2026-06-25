@@ -9,7 +9,7 @@ public abstract class ModSettingsData
 
     public string Description
     {
-        get => Strings.Get(description);
+        get => StringsHelper.Get(description);
         set => description = value;
     }
     public abstract void Register();
