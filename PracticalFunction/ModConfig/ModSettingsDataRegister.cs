@@ -12,11 +12,14 @@ public sealed class ModSettingsDataRegister
         "Config_DragDuringPause"
     );
 
-    public static readonly ModSettingsDataBool GameSpeedExtensionsData = new (
+    public static readonly ModSettingsDataDropdown GameSpeedExtensionsData = new(
         "Game Speed Extensions",
-        true,
+        ["Option_Vanilla", "Option_Extended", "Option_Resources"],
         "Config_GameSpeedExtensions"
-    );
+        )
+    {
+        Index = 1
+    };
 
     public static readonly ModSettingsDataBool DisableSlaveEscapeData = new (
         "Disable Slave Escape",

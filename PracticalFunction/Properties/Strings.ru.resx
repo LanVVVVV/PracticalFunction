@@ -189,4 +189,13 @@
   <data name="Config_PixyMoveDurationMultiplier" xml:space="preserve">
     <value>Множитель времени перемещения пикси.</value>
   </data>
+  <data name="Option_Vanilla" xml:space="preserve">
+    <value>Оригинал</value>
+  </data>
+  <data name="Option_Extended" xml:space="preserve">
+    <value>Расширенный</value>
+  </data>
+  <data name="Option_Resources" xml:space="preserve">
+    <value>Из игровых ресурсов</value>
+  </data>
 </root>

@@ -189,4 +189,13 @@
   <data name="Config_AllowDNAWithoutNiel" xml:space="preserve">
     <value>在解锁妮艾尔前解体也能产生DNA。</value>
   </data>
+  <data name="Option_Vanilla" xml:space="preserve">
+    <value>原版</value>
+  </data>
+  <data name="Option_Extended" xml:space="preserve">
+    <value>扩展的</value>
+  </data>
+  <data name="Option_Resources" xml:space="preserve">
+    <value>来自游戏资源</value>
+  </data>
 </root>

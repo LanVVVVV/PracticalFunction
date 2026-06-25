@@ -48,13 +48,23 @@ public static class ConfigDataUpdater
 
     #region Array
 
-    private static readonly float[] DefaultGameSpeedArray = { 1f, 1.5f, 2f, 3f, 4f, 5f };
+    private static readonly float[] VanillaGameSpeedArray = { 1f, 1.5f, 2f, 3f, 4f, 5f };
     private static readonly float[] ExtendedGameSpeedArray = { 1f, 1.5f, 2f, 3f, 4f, 5f, 6f, 7f, 8f, 9f, 10f };
+    private static float[]? ResourcesGameSpeedArray;
 
-    public static void UpdateGameSpeedArray(ModSettingsDataBool gameSpeedExtensionsData)
+    public static void UpdateGameSpeedArray(ModSettingsDataDropdown gameSpeedExtensionsData)
     {
+        ResourcesGameSpeedArray ??= GameManager.ConfigData.GameSpeedArray;
+
         ConfigDataAccessor.GameSpeedArray.Set(GameManager.ConfigData,
-            gameSpeedExtensionsData.GetValue ? ExtendedGameSpeedArray : DefaultGameSpeedArray);
+            gameSpeedExtensionsData.Index switch
+            {
+                0 => VanillaGameSpeedArray,
+                1 => ExtendedGameSpeedArray,
+                2 => ResourcesGameSpeedArray,
+                _ => ExtendedGameSpeedArray
+            }
+            );
     }
 
     private static readonly float[] DefaultProbabilityOfEscapingArray = { 75f, 50f, 25f, 15f, 5f, 0f };

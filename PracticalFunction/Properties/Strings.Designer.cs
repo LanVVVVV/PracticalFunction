@@ -275,5 +275,32 @@ namespace PracticalFunction.Properties {
                 return ResourceManager.GetString("Message_NoSellBirth", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   查找类似 Extended 的本地化字符串。
+        /// </summary>
+        internal static string Option_Extended {
+            get {
+                return ResourceManager.GetString("Option_Extended", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 From Game Resources 的本地化字符串。
+        /// </summary>
+        internal static string Option_Resources {
+            get {
+                return ResourceManager.GetString("Option_Resources", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Vanilla 的本地化字符串。
+        /// </summary>
+        internal static string Option_Vanilla {
+            get {
+                return ResourceManager.GetString("Option_Vanilla", resourceCulture);
+            }
+        }
     }
 }

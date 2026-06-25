@@ -189,4 +189,13 @@
   <data name="Config_AllowDNAWithoutNiel" xml:space="preserve">
     <value>Dismantling can produce DNA even before unlocking Niel.</value>
   </data>
+  <data name="Option_Vanilla" xml:space="preserve">
+    <value>Vanilla</value>
+  </data>
+  <data name="Option_Extended" xml:space="preserve">
+    <value>Extended</value>
+  </data>
+  <data name="Option_Resources" xml:space="preserve">
+    <value>From Game Resources</value>
+  </data>
 </root>
