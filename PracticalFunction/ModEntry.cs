@@ -39,6 +39,8 @@ public class ModEntry
 
     internal static void Log(string msg) => Debug.Log($"[PF] {msg}");
 
+    internal static void LogWarning(string msg) => Debug.LogWarning($"[PF] {msg}");
+
     internal static void LogError(string msg) => Debug.LogError($"[PF] {msg}");
 
     private static void ModSettingsRegister()
