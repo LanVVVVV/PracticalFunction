@@ -1,4 +1,5 @@
-﻿using MBMScripts;
+﻿using MBM.ModLoader.Settings;
+using MBMScripts;
 using PracticalFunction.Accessors;
 using PracticalFunction.ModConfig;
 
@@ -77,7 +78,9 @@ public static class ConfigDataUpdater
     #endregion
 
     #region TitsModCompatibility
-    private static bool EnabledTitsModCompatibility => ModSettingsDataRegister.TitsModCompatibilityData.GetValue;
+    private static bool EnabledTitsModCompatibility => 
+        ModSettingsDataRegister.TitsModCompatibilityData.GetValue &&
+        !ModSettings.IsHidden(ModEntry.ModName, ModSettingsDataRegister.TitsModCompatibilityData.Name);
 
     public static void UpdateSecondsOfDay(ModSettingsDataFloat secondsOfDayData)
     {

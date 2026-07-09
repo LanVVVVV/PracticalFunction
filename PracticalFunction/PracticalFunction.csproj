@@ -4,7 +4,7 @@
 		<TargetFramework>net481</TargetFramework>
 		<LangVersion>14.0</LangVersion>
 		<Nullable>enable</Nullable>
-		<Version>2.3.1.0</Version>
+		<Version>2.3.2.0</Version>
 		<Authors>LanFengVVV</Authors>
 		<Description>MBM.ModLoader mod for Monster Black Market —</Description>
 		<CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>

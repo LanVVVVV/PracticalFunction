@@ -132,13 +132,6 @@ public class ModEntry
             return;
         }
 
-        // Hidden
-        ModSettings.Set(ModName, ModSettingsDataRegister.TitsModCompatibilityData.Name, false);
-        ModSettings.SetVisibleWhen(ModName, ModSettingsDataRegister.TitsModCompatibilityData.Name,
-            new Dictionary<string, string[]>
-            {
-                    { "True", new[] { "TitsMod" } }
-            });
-        Log("Hidden: Tits Mod Compatibility.");
+        ModSettings.HideSetting(ModName, ModSettingsDataRegister.TitsModCompatibilityData.Name);
     }
 }
