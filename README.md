@@ -1,6 +1,6 @@
 # PracticalFunction
 
-PracticalFunction is a mod for **Monster Black Market** —— adding some Practical Function and allowing customizing some game settings.
+PracticalFunction is a mod for **Monster Black Market** —— Adds practical quality-of-life functions and enables customization of various game settings.
 
 ### Features
 
@@ -31,10 +31,10 @@ PracticalFunction is a mod for **Monster Black Market** —— adding some Pract
 
 ### Requirements
 
-| Dependency           | Version    |
-| -------------------- | ---------- |
-| MBM.ModLoader        | ≥ 0.6.0    |
-| Monster Black Market | ≥ 2.1.2.0  |
+| Dependency           | Version   | Link |
+| -------------------- | --------- | ---- |
+| Monster Black Market | ≥ 2.1.2.0 |      |
+| MBM.ModLoader        | ≥ 0.7.1   | [F95Zone](https://f95zone.to/threads/monster-black-market-mbm-modloader-0-7-1.290109/) |
 
 ### Compatibility
 

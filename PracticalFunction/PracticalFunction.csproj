@@ -6,7 +6,7 @@
 		<Nullable>enable</Nullable>
 		<Version>2.3.2.0</Version>
 		<Authors>LanFengVVV</Authors>
-		<Description>MBM.ModLoader mod for Monster Black Market —</Description>
+		<Description>MBM.ModLoader mod for Monster Black Market — Adds practical quality-of-life functions and enables customization of various game settings.</Description>
 		<CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
 		<MBM>..\..\..\MBM.ModLoader For v2.1.2.0\Monster_Black_Market_v2.1.2.0 - MBM.ModLoader</MBM>
 	</PropertyGroup>
