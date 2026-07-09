@@ -7,12 +7,14 @@ namespace PracticalFunction.Features;
 
 public static class OneClickSell
 {
+    private const KeyCode KeySell = KeyCode.Delete;
+
     private static bool Enabled => ModSettingsDataRegister.OneClickSellData.GetValue;
 
     public static void OnKeyPress()
     {
         if (!Enabled) return;
-        if (Input.GetKeyDown(KeyCode.Delete)) Sell();
+        if (Input.GetKeyDown(KeySell)) Sell();
     }
 
     public static void Sell()
