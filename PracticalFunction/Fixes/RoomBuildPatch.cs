@@ -13,10 +13,11 @@ public class RoomBuildPatch
     [HarmonyPostfix]
     public static void OnStartPostfix(Room __instance)
     {
-        if (__instance.RoomType == ERoomType.Pillar) return;
-
-        BoxCollider2D collider = __instance.UnitComponent.transform.Find("Collider").GetComponent<BoxCollider2D>();
-        collider.enabled = false;
-        collider.enabled = true;
+        var colliderTransform = __instance.UnitComponent.transform.Find("Collider");
+        if (colliderTransform is not null && colliderTransform.TryGetComponent(out BoxCollider2D collider))
+        {
+            collider.enabled = false;
+            collider.enabled = true;
+        }
     }
 }
